@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>David Carranco — Builder &amp; Solutions Engineer</title>
+<meta name="description" content="David Arturo Carranco — Early Solutions Engineer & Builder at Salesforce. Internal tooling, AI-assisted automation, and account-risk reporting." />
+<style>
+  :root{
+    --bg:#0b1120;
+    --bg-soft:#111a2e;
+    --card:#141f38;
+    --card-2:#17233f;
+    --line:rgba(255,255,255,.08);
+    --line-strong:rgba(255,255,255,.14);
+    --txt:#e8edf7;
+    --txt-dim:#9aa7bf;
+    --txt-faint:#6b7a96;
+    --brand:#1b96ff;      /* Salesforce blue */
+    --brand-2:#0d9dda;
+    --accent:#6ea8ff;
+    --good:#2ec27e;
+    --radius:16px;
+    --maxw:1040px;
+    --shadow:0 10px 40px rgba(0,0,0,.35);
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Inter", sans-serif;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6f8fc; --bg-soft:#eef2f9; --card:#ffffff; --card-2:#f3f6fc;
+      --line:rgba(10,22,50,.09); --line-strong:rgba(10,22,50,.16);
+      --txt:#111a2e; --txt-dim:#4a5878; --txt-faint:#7483a1;
+      --shadow:0 10px 36px rgba(16,32,70,.10);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(27,150,255,.14), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgba(13,157,218,.10), transparent 55%),
+      var(--bg);
+    color:var(--txt); font-family:var(--font); line-height:1.6;
+    -webkit-font-smoothing:antialiased; letter-spacing:.1px;
+  }
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(150%) blur(12px);
+    background:color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:62px}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px}
+  .logo .dot{width:11px; height:11px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 22%, transparent)}
+  .navlinks{display:flex; gap:4px; flex-wrap:wrap}
+  .navlinks a{padding:7px 13px; border-radius:999px; color:var(--txt-dim); font-size:14px; font-weight:500; transition:.18s}
+  .navlinks a:hover{color:var(--txt); background:var(--card)}
+  .cta{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff !important; font-weight:600}
+  .cta:hover{filter:brightness(1.08)}
+  @media(max-width:720px){ .navlinks a:not(.cta){display:none} }
+
+  /* HERO */
+  header{padding:70px 0 36px}
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); border:1px solid var(--line-strong); padding:6px 12px; border-radius:999px; background:var(--card)}
+  .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 70%,transparent);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  h1{font-size:clamp(38px,6vw,64px); line-height:1.02; margin:22px 0 10px; font-weight:800; letter-spacing:-1.2px}
+  h1 .grad{background:linear-gradient(120deg,var(--brand),var(--accent) 60%,#b388ff); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .role{font-size:clamp(18px,2.4vw,22px); color:var(--txt-dim); font-weight:500; max-width:720px}
+  .lead{margin-top:20px; max-width:760px; color:var(--txt-dim); font-size:17px}
+  .meta{display:flex; gap:18px; flex-wrap:wrap; margin-top:26px; color:var(--txt-faint); font-size:14.5px}
+  .meta span{display:inline-flex; align-items:center; gap:7px}
+  .btns{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px}
+  .btn{padding:12px 20px; border-radius:12px; font-weight:600; font-size:15px; border:1px solid var(--line-strong); background:var(--card); transition:.18s; display:inline-flex; align-items:center; gap:9px}
+  .btn:hover{transform:translateY(-2px); border-color:var(--brand)}
+  .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#fff; border:none}
+
+  /* STATS */
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:46px 0 10px}
+  @media(max-width:720px){ .stats{grid-template-columns:repeat(2,1fr)} }
+  .stat{background:linear-gradient(180deg,var(--card),var(--card-2)); border:1px solid var(--line); border-radius:var(--radius); padding:20px}
+  .stat .n{font-size:30px; font-weight:800; letter-spacing:-.5px; background:linear-gradient(120deg,var(--brand),var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .stat .l{font-size:13px; color:var(--txt-dim); margin-top:4px; line-height:1.35}
+
+  /* SECTION */
+  section{padding:52px 0; border-top:1px solid var(--line)}
+  .sec-head{display:flex; align-items:center; gap:12px; margin-bottom:26px}
+  .sec-head .idx{font-size:13px; font-weight:700; color:var(--brand); font-variant-numeric:tabular-nums}
+  .sec-head h2{font-size:clamp(24px,3.4vw,32px); margin:0; font-weight:800; letter-spacing:-.6px}
+  .sec-head .rule{flex:1; height:1px; background:var(--line)}
+
+  /* PROJECTS */
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media(max-width:820px){ .grid{grid-template-columns:1fr} }
+  .proj{background:linear-gradient(180deg,var(--card),var(--card-2)); border:1px solid var(--line); border-radius:var(--radius); padding:24px; transition:.2s; position:relative; overflow:hidden}
+  .proj:hover{border-color:var(--brand); transform:translateY(-3px); box-shadow:var(--shadow)}
+  .proj::before{content:""; position:absolute; inset:0 0 auto 0; height:3px; background:linear-gradient(90deg,var(--brand),transparent)}
+  .proj .tag{font-size:12px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:.08em}
+  .proj h3{margin:8px 0 6px; font-size:19px; font-weight:700}
+  .proj p{margin:0; color:var(--txt-dim); font-size:14.5px}
+  .proj ul{margin:12px 0 0; padding-left:18px; color:var(--txt-dim); font-size:14px}
+  .proj ul li{margin:5px 0}
+  .chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px}
+  .chip{font-size:12px; padding:5px 10px; border-radius:999px; background:var(--bg-soft); border:1px solid var(--line); color:var(--txt-dim)}
+
+  /* SKILLS */
+  .skills{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media(max-width:820px){ .skills{grid-template-columns:1fr} }
+  .skillcard{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+  .skillcard h4{margin:0 0 12px; font-size:15px; display:flex; align-items:center; gap:9px}
+  .skillcard h4 .ic{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:color-mix(in srgb,var(--brand) 18%,transparent);color:var(--accent);font-size:15px}
+  .skillcard .chips{margin-top:0}
+
+  /* TIMELINE */
+  .timeline{position:relative; padding-left:26px}
+  .timeline::before{content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--line-strong)}
+  .tl{position:relative; padding:0 0 26px}
+  .tl:last-child{padding-bottom:0}
+  .tl::before{content:""; position:absolute; left:-23px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 20%,transparent)}
+  .tl .when{font-size:13px; color:var(--txt-faint); font-weight:600}
+  .tl h3{margin:3px 0 2px; font-size:17px}
+  .tl .org{color:var(--accent); font-size:14px; font-weight:500}
+  .tl ul{margin:10px 0 0; padding-left:18px; color:var(--txt-dim); font-size:14.5px}
+  .tl ul li{margin:5px 0}
+
+  /* CERT + EDU */
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media(max-width:820px){ .cols{grid-template-columns:1fr} }
+  .list{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:22px}
+  .list h4{margin:0 0 14px; font-size:15px}
+  .list .row{display:flex; align-items:flex-start; gap:11px; padding:9px 0; border-top:1px solid var(--line); font-size:14.5px; color:var(--txt-dim)}
+  .list .row:first-of-type{border-top:none}
+  .list .row .mk{color:var(--brand); margin-top:2px}
+  .badge{font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; margin-left:auto; white-space:nowrap}
+  .badge.done{background:color-mix(in srgb,var(--good) 20%,transparent); color:var(--good)}
+  .badge.wip{background:color-mix(in srgb,var(--brand) 20%,transparent); color:var(--accent)}
+
+  /* CONTACT */
+  .contact{text-align:center; background:linear-gradient(180deg,var(--card),var(--card-2)); border:1px solid var(--line); border-radius:22px; padding:46px 24px; margin-top:10px}
+  .contact h2{font-size:clamp(26px,4vw,38px); margin:0 0 10px; letter-spacing:-.6px}
+  .contact p{color:var(--txt-dim); max-width:520px; margin:0 auto 24px}
+  footer{padding:30px 0 50px; color:var(--txt-faint); font-size:13px; text-align:center}
+
+  .fade{opacity:0; transform:translateY(16px); transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .fade.in{opacity:1; transform:none}
+  @media(prefers-reduced-motion:reduce){ .fade{opacity:1; transform:none; transition:none} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="dot"></span> David Carranco</a>
+    <div class="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#enablement">Enablement</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a class="cta" href="mailto:dcarranco@salesforce.com">Let's talk</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+<header>
+  <div class="wrap">
+    <span class="eyebrow"><span class="pulse"></span> Open to new opportunities · Salesforce LATAM</span>
+    <h1>Builder &amp; <span class="grad">Solutions Engineer</span><br>who ships, end to end.</h1>
+    <p class="role">Early-career Solutions Engineer at Salesforce. I build internal tooling and AI-assisted automation from requirements through deployment and upkeep.</p>
+    <p class="lead">I own problems with a systems-thinking approach — asking whether a request is a task or a symptom, then building the thing that stops it from recurring. Career-changer from architecture, now studying Software Engineering. Hands-on with core Salesforce configuration and with AI tools (Claude, Claude Code) to get from idea to working prototype fast.</p>
+    <div class="meta">
+      <span>📍 Veracruz, Mexico · open to relocation</span>
+      <span>🗣️ Spanish (native) · English C1</span>
+      <span>✦ Platform Administrator Certified</span>
+    </div>
+    <div class="btns">
+      <a class="btn primary" href="mailto:dcarranco@salesforce.com">✉ dcarranco@salesforce.com</a>
+      <a class="btn" href="https://linkedin.com/in/david-carranco-6376832b2" target="_blank" rel="noopener">in LinkedIn</a>
+      <a class="btn" href="https://github.com/davx1111" target="_blank" rel="noopener">⌥ GitHub</a>
+      <a class="btn" href="https://davx1111.github.io/Portafolio-de-proyectos" target="_blank" rel="noopener">◳ Project portfolio</a>
+    </div>
+
+    <div class="stats fade">
+      <div class="stat"><div class="n">231+</div><div class="l">Accounts scored for attrition risk</div></div>
+      <div class="stat"><div class="n">E2E</div><div class="l">Server-to-server integration owned, full lifecycle</div></div>
+      <div class="stat"><div class="n">2-axis</div><div class="l">Account-risk reporting model designed &amp; driven</div></div>
+      <div class="stat"><div class="n">4+</div><div class="l">Salesforce objects modeled: Account · Opp · Case · User</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">01</span><h2>Key projects</h2><span class="rule"></span></div>
+    <div class="grid">
+
+      <div class="proj fade">
+        <span class="tag">Owner · full lifecycle</span>
+        <h3>Attrition Signals — Salesforce → Heroku Internal Tool</h3>
+        <p>A server-to-server integration consuming CRM data into a Heroku app, owned from requirements through deployment.</p>
+        <ul>
+          <li>Designed &amp; configured the Heroku app <em>attrition-signals</em>, reading Account, Opportunity, Case &amp; User via a Connected App / API user over the OAuth 2.0 Client Credentials flow.</li>
+          <li>Drove the IP-allowlisting request and troubleshooting, weighing Heroku Private Space vs. static-IP add-ons and coordinating with Security.</li>
+        </ul>
+        <div class="chips"><span class="chip">Connected Apps</span><span class="chip">OAuth 2.0 Client Credentials</span><span class="chip">Heroku</span><span class="chip">REST API</span><span class="chip">Security coordination</span></div>
+      </div>
+
+      <div class="proj fade">
+        <span class="tag">Designer · Driver</span>
+        <h3>Attrition Signals Scanner — Account-Risk &amp; Reporting Model</h3>
+        <p>A dual-axis risk model that flags attrition risk across territories — a reusable reporting system, not a one-off.</p>
+        <ul>
+          <li>Combined Slack engagement signals (D1–D10) with Customer Success signals from an internal CRM to score <strong>231+ accounts</strong>.</li>
+          <li>Built the scoring logic, consolidated duplicate entities, and produced executive reports for leadership.</li>
+        </ul>
+        <div class="chips"><span class="chip">Data modeling</span><span class="chip">Internal CRM</span><span class="chip">Scoring logic</span><span class="chip">Executive reporting</span><span class="chip">Slack</span></div>
+      </div>
+
+      <div class="proj fade">
+        <span class="tag">Product · FastAPI + React</span>
+        <h3>Attrition Intelligence — Web App</h3>
+        <p>Turned the risk model into a usable product: a dashboard that surfaces account-risk signals to SEs and leadership.</p>
+        <ul>
+          <li>Built a FastAPI + React app deployed on Heroku, with authentication and a reporting UI on top of the scoring engine.</li>
+          <li>Backed by an automated test suite (23 tests) so it ships safe and stays maintainable.</li>
+        </ul>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Heroku</span><span class="chip">Auth</span><span class="chip">Automated tests</span></div>
+      </div>
+
+      <div class="proj fade">
+        <span class="tag">Automation · packaged as a team skill</span>
+        <h3>Centro de Mando — Personal Operations Hub</h3>
+        <p>A command center that pulls Slack, Gmail and Calendar into one unified, always-current view — so my whole context lives in one place.</p>
+        <ul>
+          <li>Automated the sync from three sources into structured Notion views (projects · follow-ups · learning paths · assets).</li>
+          <li>Generalized it into a <strong>reusable, privacy-first skill</strong> the rest of the LATAM team can install — a one-to-one tool that became one-to-many.</li>
+        </ul>
+        <div class="chips"><span class="chip">Workflow automation</span><span class="chip">Slack · Gmail · Calendar</span><span class="chip">Notion API</span><span class="chip">Reusable skill</span><span class="chip">Privacy-first</span></div>
+      </div>
+
+      <div class="proj fade">
+        <span class="tag">Agentforce · headless delivery</span>
+        <h3>Agentforce Agents, Delivered Headless</h3>
+        <p>Took Agentforce agents beyond the builder and into custom front-ends via the Agent API.</p>
+        <ul>
+          <li>Surfaced a Lookup agent through a headless Fastify + React web app, consuming the Agent API end to end.</li>
+          <li>Prototyped multi-agent contact-center experiences on Node / Express + the Claude API — connecting LLMs to real conversational flows.</li>
+        </ul>
+        <div class="chips"><span class="chip">Agentforce</span><span class="chip">Agent API</span><span class="chip">Fastify</span><span class="chip">Node / Express</span><span class="chip">Claude API</span></div>
+      </div>
+
+      <div class="proj fade">
+        <span class="tag">Full-stack · Generation Mexico</span>
+        <h3>FunnyTrip — Full-Stack E-Commerce App</h3>
+        <p>A travel e-commerce web app taken from idea to a working, deployed prototype across frontend and backend.</p>
+        <ul>
+          <li>Built responsive UI, database and API integration, unit testing, and local + remote deployment.</li>
+        </ul>
+        <div class="chips"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span><span class="chip">REST API</span></div>
+      </div>
+
+      <div class="proj fade">
+        <span class="tag">Craft that transfers</span>
+        <h3>Architecture &amp; 3D Visualization → Demo Design</h3>
+        <p>Years producing executive plans and 3D renders for public/private projects — a visual-storytelling craft that maps directly onto demo design.</p>
+        <ul>
+          <li>Managed cost estimation, bids and tenders (CFE, API, IMSS) under deadline pressure.</li>
+          <li>Point of contact for clients and vendors, translating scattered requests into deliverables.</li>
+        </ul>
+        <div class="chips"><span class="chip">Requirements gathering</span><span class="chip">Stakeholder mgmt</span><span class="chip">3D visualization</span><span class="chip">Storytelling</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="enablement">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">02</span><h2>Enablement &amp; one-to-many impact</h2><span class="rule"></span></div>
+    <div class="grid">
+      <div class="proj fade">
+        <span class="tag">Build Day · LWC + Three.js</span>
+        <h3>3D Product Configurator</h3>
+        <p>Built an interactive 3D product configurator as a Lightning Web Component (Three.js) for a Mexico Build Day, and delivered it as a guided, multi-track workshop so others could build it too.</p>
+        <div class="chips"><span class="chip">LWC</span><span class="chip">Three.js</span><span class="chip">Workshop</span></div>
+      </div>
+      <div class="proj fade">
+        <span class="tag">Sessions · decks &amp; guides</span>
+        <h3>Data Cloud &amp; Agentforce Enablement</h3>
+        <p>Authored and presented enablement on Data Cloud / Data 360 and Agentforce — building the demos, decks and written guides, not just delivering slides.</p>
+        <div class="chips"><span class="chip">Data 360</span><span class="chip">Agentforce</span><span class="chip">Demo building</span><span class="chip">Public speaking</span></div>
+      </div>
+      <div class="proj fade">
+        <span class="tag">Mentoring · early talent</span>
+        <h3>AI Builder Session — Generation Alumni</h3>
+        <p>Ran a session for Generation Mexico alumni on the SE / AI Builder internship path — translating my own journey into a repeatable on-ramp for the next cohort.</p>
+        <div class="chips"><span class="chip">Mentoring</span><span class="chip">Early-career</span><span class="chip">Career storytelling</span></div>
+      </div>
+      <div class="proj fade">
+        <span class="tag">Tooling · shared with the team</span>
+        <h3>Reusable Skills for the Team</h3>
+        <p>Packaged my own tools (e.g. the Centro de Mando command center) into installable skills and shared them with the LATAM Solutions team — multiplying one person's work across many.</p>
+        <div class="chips"><span class="chip">Reusable skills</span><span class="chip">Knowledge sharing</span><span class="chip">AI enablement</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">03</span><h2>What I bring</h2><span class="rule"></span></div>
+    <div class="skills">
+      <div class="skillcard fade">
+        <h4><span class="ic">☁</span> Core Salesforce Configuration</h4>
+        <div class="chips"><span class="chip">Objects &amp; Fields</span><span class="chip">Page Layouts</span><span class="chip">Lightning app config</span><span class="chip">Flows &amp; automation</span><span class="chip">Permissions &amp; Sharing</span><span class="chip">Reports &amp; Dashboards</span><span class="chip">Data modeling</span></div>
+      </div>
+      <div class="skillcard fade">
+        <h4><span class="ic">✦</span> Building with AI Tools</h4>
+        <div class="chips"><span class="chip">Claude</span><span class="chip">Claude Code</span><span class="chip">Vibe coding</span><span class="chip">Scaffold apps</span><span class="chip">Rapid prototyping</span></div>
+      </div>
+      <div class="skillcard fade">
+        <h4><span class="ic">⇄</span> Integration &amp; Automation</h4>
+        <div class="chips"><span class="chip">Connected Apps</span><span class="chip">OAuth 2.0 Client Credentials</span><span class="chip">API / integration user</span><span class="chip">REST APIs</span><span class="chip">Server-to-server</span><span class="chip">IP allowlisting</span></div>
+      </div>
+      <div class="skillcard fade">
+        <h4><span class="ic">⌨</span> Application Development</h4>
+        <div class="chips"><span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span><span class="chip">SQL</span><span class="chip">Python (basic)</span><span class="chip">Unit testing</span></div>
+      </div>
+      <div class="skillcard fade">
+        <h4><span class="ic">⚒</span> Platforms &amp; Tools</h4>
+        <div class="chips"><span class="chip">Salesforce Platform</span><span class="chip">Heroku</span><span class="chip">Git / GitHub</span><span class="chip">Linux CLI</span><span class="chip">Internal CRM</span></div>
+      </div>
+      <div class="skillcard fade">
+        <h4><span class="ic">◎</span> Ways of Working</h4>
+        <div class="chips"><span class="chip">Systems thinking</span><span class="chip">Documentation &amp; handoff</span><span class="chip">Backlog prioritization</span><span class="chip">Cross-functional partnership</span><span class="chip">Metrics-driven (adoption · hours saved · ROI)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">04</span><h2>Experience</h2><span class="rule"></span></div>
+    <div class="timeline">
+      <div class="tl fade">
+        <div class="when">May 2026 — Present</div>
+        <h3>Early Solutions Engineer</h3>
+        <div class="org">Salesforce · Mexico (LATAM)</div>
+        <ul>
+          <li>Build and own internal tooling and automation that unblocks Solutions Engineers — end to end, from requirements through deployment and upkeep.</li>
+          <li>Configure core Salesforce (objects, fields, flows, permissions &amp; sharing, reports &amp; dashboards) and model data across Account, Opportunity, Case &amp; User so the story holds up on screen.</li>
+          <li>Build with AI tools (Claude, Claude Code) to scaffold automations and move from idea to working prototype quickly.</li>
+          <li>Partner cross-functionally with SE champions, Alliances &amp; Channels, Data Cloud / Data 360, Security, and internal Recruiting across Salesforce LATAM — avoiding duplicated effort.</li>
+          <li>Document as I build, so what I ship is runnable, fixable, and extendable by someone else.</li>
+        </ul>
+      </div>
+      <div class="tl fade">
+        <div class="when">Feb 2022 — Aug 2025</div>
+        <h3>Architecture &amp; Construction</h3>
+        <div class="org">IDA Render · Construcciones Ponce Moya · Infinite Architecture · M.A. Energía y Construcción</div>
+        <ul>
+          <li>Managed cost estimation, bids and tenders for public and private projects (CFE, API, IMSS) — scoping and prioritization under deadline pressure.</li>
+          <li>Coordinated multidisciplinary teams; point of contact for clients and vendors.</li>
+          <li>Produced executive plans and 3D visualization / renders — visual storytelling that transfers directly to demo design.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="sec-head"><span class="idx">05</span><h2>Certifications &amp; education</h2><span class="rule"></span></div>
+    <div class="cols">
+      <div class="list fade">
+        <h4>Certifications</h4>
+        <div class="row"><span class="mk">✓</span> Salesforce Certified Platform Administrator <span class="badge done">Certified</span></div>
+        <div class="row"><span class="mk">◇</span> Salesforce Agentforce Specialist <span class="badge wip">In progress</span></div>
+        <div class="row"><span class="mk">✓</span> IBM Artificial Intelligence Fundamentals (2025) — Guayerd / IBM</div>
+        <div class="row"><span class="mk">✓</span> IBM Full Stack Software Developer: Intro to Software Engineering — Coursera / IBM</div>
+        <div class="row"><span class="mk">✓</span> Machine Learning with Python (Level 1) — IBM</div>
+        <div class="row"><span class="mk">✓</span> Data Fundamentals — IBM</div>
+        <div class="row"><span class="mk">✓</span> Agile Explorer — IBM</div>
+      </div>
+      <div class="list fade">
+        <h4>Education</h4>
+        <div class="row"><span class="mk">▸</span> Software Engineering (Ing. en Desarrollo de Software) — UVEG <span class="badge wip">Sep 2025 →</span></div>
+        <div class="row"><span class="mk">▸</span> Java Full Stack Developer Bootcamp — Generation Mexico <span class="badge done">Oct 2025 – Jan 2026</span></div>
+        <div class="row"><span class="mk">▸</span> Bachelor's in Architecture — Universidad del Valle de México <span class="badge done">2016 – 2021</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="contact fade">
+      <h2>Let's build something.</h2>
+      <p>Looking for a Solutions Engineer who takes a problem from requirements all the way to a shipped, documented tool? That's the work I love.</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn primary" href="mailto:dcarranco@salesforce.com">✉ dcarranco@salesforce.com</a>
+        <a class="btn" href="https://linkedin.com/in/david-carranco-6376832b2" target="_blank" rel="noopener">in LinkedIn</a>
+        <a class="btn" href="https://github.com/davx1111" target="_blank" rel="noopener">⌥ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">David Arturo Carranco Villarnobo · Builder &amp; Solutions Engineer · Veracruz, Mexico · +52 229 433 2036</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
